@@ -34,8 +34,8 @@
       <file leaf-file-name="bing.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/bing.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.55821204">
-              <caret line="746" column="30" selection-start-line="746" selection-start-column="30" selection-end-line="746" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.24740125">
+              <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
               <folding />
             </state>
           </provider>
@@ -220,7 +220,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="1272" y="-8" width="1936" height="1176" extended-state="0" />
+    <frame x="1272" y="-8" width="1936" height="1176" extended-state="1" />
     <editor active="true" />
     <layout>
       <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" weight="0.20416667" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
@@ -591,8 +591,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/bing.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.55821204">
-          <caret line="746" column="30" selection-start-line="746" selection-start-column="30" selection-end-line="746" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.24740125">
+          <caret line="14" column="9" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="9" />
           <folding />
         </state>
       </provider>
