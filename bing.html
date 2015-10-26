@@ -536,7 +536,7 @@ L.bingLayer = function (key, options) {
 <script type="text/javascript">
 	function heatmap_init(){
 		var heatmap = new
-				L.TileLayer.HeatCanvas({},{'step':1, 'degree':HeatCanvas.QUAD, 'opacity':0.7});
+				L.TileLayer.HeatCanvas({},{'step':10, 'degree':HeatCanvas.QUAD, 'opacity':0.7});
 		return heatmap;
 	}
 </script>
@@ -586,7 +586,7 @@ L.bingLayer = function (key, options) {
 		</div>
 	</div>
 <script type='text/javascript'>
-var map = new L.Map('map', {center: new L.LatLng(40,117), zoom: 8, zoomAnimation: true});
+var map = new L.Map('map', {center: new L.LatLng(31,121), zoom: 9, zoomAnimation: true});
 var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
 var bing_AerialWithLabels = new L.BingLayer("ArZCNayugTS_wpkhFYJHjCM6ojGG_fvv7rXLhd4WmDXNOE-7rs6NpUsigWq34s3y",{type: 'AerialWithLabels',culture: 'en-US'});
 var bing_Aerial = new L.BingLayer("ArZCNayugTS_wpkhFYJHjCM6ojGG_fvv7rXLhd4WmDXNOE-7rs6NpUsigWq34s3y",{type: 'Aerial',culture:"ja"});
@@ -595,8 +595,8 @@ var heatmap=heatmap_init();
 var DrawerLayers = new L.LayerGroup();
 var GridLayers=new L.LayerGroup();
 var StackLayers=new L.LayerGroup();
-map.addLayer(bing_Road);
-var MapSwitcher=new L.Control.Layers({'OSM':osm, "Bing_AerialWithLabels":bing_AerialWithLabels, "Bing_Aerial":bing_Aerial, "Bing_Road":bing_Road}, {"DrawerLayers":DrawerLayers,"heatmap":heatmap,"GridLayers":GridLayers,"StackLayer":StackLayers});
+map.addLayer(bing_AerialWithLabels);
+var MapSwitcher=new L.Control.Layers({'OSM':osm, "Bing_AerialWithLabels":bing_AerialWithLabels, "Bing_Aerial":bing_Aerial, /*"Bing_Road":bing_Road*/}, {"DrawerLayers":DrawerLayers,"heatmap":heatmap,"GridLayers":GridLayers,"StackLayer":StackLayers});
 map.addControl(MapSwitcher);
 //-----------------------------------------------------------------------------------------------------------------------------------------
 //Quadtree Grids Component-----------------------------------------------------------------------------------
@@ -931,6 +931,6 @@ function init(){
 }
 //----------------------------------------------------------------------------------------------------
 </script>
-	<script src="data.js"></script>
+	<script src="data2.js"></script>
 </body>
 </html>
