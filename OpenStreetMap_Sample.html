@@ -180,9 +180,13 @@
 <script type='text/javascript'>
 var map = new L.Map('map', {center: new L.LatLng(39.5, 117), zoom: 9, zoomAnimation: true });
 map.addLayer(new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png'));
+map.fitBounds([
+	[31.05, 121.25],
+	[31.45, 121.70]
+]);
 //------------------------------------------------------------------------------------
-L.marker([51.5, -0.09]).addTo(map)
-		.bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
+//L.marker([51.5, -0.09]).addTo(map)
+//		.bindPopup("<b>Hello world!</b><br />I am a popup.").openPopup();
 //------------------------------------------------------------------------------------
 //Insert Circle
 		L.circle([40,116.2], 50, {
@@ -198,34 +202,10 @@ L.marker([51.5, -0.09]).addTo(map)
 		}).addTo(map).bindPopup("I am a circle.");
 //------------------------------------------------------------------------------------
 //Iinsert Rectangle
-L.rectangle([[39.9025,116.4065],[39.9075,116.4135]], {color: "#123456", weight: 1}).addTo(map);
-L.rectangle([[31.2325,121.4745],[31.2375,121.4815]], {color: "#123456", weight: 1}).addTo(map);
-L.rectangle([[30.5925,114.3065],[30.5975,114.3135]], {color: "#123456", weight: 1}).addTo(map);
-L.rectangle([[34.3425,108.9375],[34.3475,108.9445]], {color: "#123456", weight: 1}).addTo(map);
-L.rectangle([[23.1275,113.2635],[23.1325,113.2705]], {color: "#123456", weight: 1}).addTo(map);
-L.rectangle([[34.7475,113.6275],[34.7525,113.6345]], {color: "#123456", weight: 1}).addTo(map);
-L.rectangle([[30.2725,120.1585],[30.2775,120.1655]], {color: "#123456", weight: 1}).addTo(map);
-L.rectangle([[32.0625,118.7935],[32.0675,118.8005]], {color: "#123456", weight: 1}).addTo(map);
 //------------------------------------------------------------------------------------
 //Insert Polygon
-		L.polygon([
-			[39.509, 116.08],
-			[39.509, 116.08],
-			[39.503, 116.06],
-			[39.51, 116.047]
-		]).addTo(map).bindPopup("I am a polygon.");
 //------------------------------------------------------------------------------------
 //Insert Polyline::
-var polyline = L.polyline([
-[40.233095,117.396814],
-[40.242128,117.360068],
-[40.25027,117.348757],
-[40.283717,117.343034],
-[40.284012,117.30242],
-[40.298824,117.300909],
-[40.307248,117.294971],
-[40.31483,117.280908]
-], {color: 'red'}).addTo(map);
 //------------------------------------------
 		var popup = L.popup();
 
@@ -238,6 +218,10 @@ var polyline = L.polyline([
 
 		map.on('click', onMapClick);
 //------------------------------------------
+	//To JavaWeb
+function MapBoundsToJavaWeb() {
+	CallJava("Bounds_x1_x2_y1_y2",map.getBounds().getWest(),map.getBounds().getEast(),map.getBounds().getSouth(),map.getBounds().getNorth());
+}
 </script>
 </body>
 </html>
