@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Baidu Map with leaflet-stable</title>
+
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="Baidu/leaflet.css" />
+        <script type="text/javascript" src="https://rawgit.com/Leaflet/Leaflet/stable/build/deps.js"></script>
+        <script src="https://rawgit.com/Leaflet/Leaflet/stable/debug/leaflet-include.js"></script>
+ 
+        <script src="http://api.map.baidu.com/api?v=1.5&ak=Gt0BG62R7T5GDvuPSj65MBl4"></script>
+        <script src="Baidu/leaflet-baidu.js"></script>
+    </head>
+    <body style=margin:0px 0px 0px 0px">
+        <div style="width:800px; height:600px" id="map"></div>
+        <!-- <div style="width:2100px; height:2100px" id="map"></div> -->
+        <script type='text/javascript'>
+            map = new L.map(
+                'map',
+                {
+                    'crs': L.CRS.BEPSG3857,
+                    // Coordinate of Tian'an Men of Baidu Coordinate
+                    // 'center': [39.915, 116.404],
+                    // 'zoom': 18,
+                    // zoomAnimation: false
+                }
+            );
+            // map.setView([0, 0], 3);
+            // map.setView([64.117802, 75.355328], 3);
+            map.setView([31.2, 121.5], 10);
+            L.control.scale().addTo(map);
+            var baiduLayer = new L.TileLayer.BaiduLayer();
+            map.addLayer(baiduLayer);
+
+            //------------------------------------------
+            //To JavaWeb
+            document.body.scroll="no";
+            map.invalidateSize(true);
+            function MapBoundsToJavaWeb() {
+                CallJava("Bounds_x1_x2_y1_y2",map.getBounds().getWest(),map.getBounds().getEast(),map.getBounds().getSouth(),map.getBounds().getNorth());
+            }
+            function ResizeMap(ScreenWidth,ScreenHeight){
+                document.getElementById("map").style.width=ScreenWidth+"px";
+                document.getElementById("map").style.height=ScreenHeight+"px";
+                map.invalidateSize(true);
+            }
+
+        </script>
+    <script src="BaiduData.js"></script>
+    </body>
+</html>

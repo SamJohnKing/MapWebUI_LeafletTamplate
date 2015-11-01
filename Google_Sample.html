@@ -208,11 +208,11 @@ L.Google.asyncInitialize = function() {
 
 	</script>
 </head>
-<body>
+<body style="margin:0px 0px 0px 0px">
 	<!-- define a DIV into which the map will appear. Make it take up the whole window -->
 	<div style="width:100%; height:100%" id="map"></div>
 <script type='text/javascript'>
-var map = new L.Map('map', {center: new L.LatLng(40,117), zoom: 8,zoomAnimation: true});
+var map = new L.Map('map', {center: new L.LatLng(31,121.5), zoom: 10,zoomAnimation: true});
 var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
 
 var styles = [
@@ -222,7 +222,7 @@ var styles = [
     }
  ];
 	// Possible types: SATELLITE, ROADMAP, HYBRID, TERRAIN
-var ggl = new L.Google('HYBRID', {
+var ggl = new L.Google('ROADMAP', {
 	mapOptions: {
 		styles: styles
 	}
@@ -230,7 +230,17 @@ var ggl = new L.Google('HYBRID', {
 map.addLayer(ggl);
 map.addControl(new L.Control.Layers( {'OSM':osm, 'Google':ggl}, {}));
 //-----------------------------------------
+document.body.scroll="no";
+map.invalidateSize(true);
+function MapBoundsToJavaWeb() {
+	CallJava("Bounds_x1_x2_y1_y2",map.getBounds().getWest(),map.getBounds().getEast(),map.getBounds().getSouth(),map.getBounds().getNorth());
+}
+function ResizeMap(ScreenWidth,ScreenHeight){
+	document.getElementById("map").style.width=ScreenWidth+"px";
+	document.getElementById("map").style.height=ScreenHeight+"px";
+	map.invalidateSize(true);
+}
 </script>
-	<script src="data2.js"></script>
+	<script src="GoogleData2.js"></script>
 </body>
 </html>

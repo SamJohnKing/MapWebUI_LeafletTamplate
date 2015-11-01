@@ -929,8 +929,11 @@ map.on('zoomstart',onZoomStart);
 function init(){
 	document.getElementById("bar").style.cssText="visibility:hidden;";
 }
+//To JavaWeb
+function MapBoundsToJavaWeb() {
+	CallJava("Bounds_x1_x2_y1_y2",map.getBounds().getWest(),map.getBounds().getEast(),map.getBounds().getSouth(),map.getBounds().getNorth());
+}
 //----------------------------------------------------------------------------------------------------
 </script>
-	<script src="data2.js"></script>
 </body>
 </html>
