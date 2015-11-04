@@ -229,6 +229,7 @@ var ggl = new L.Google('ROADMAP', {
 });
 map.addLayer(ggl);
 map.addControl(new L.Control.Layers( {'OSM':osm, 'Google':ggl}, {}));
+L.control.scale().addTo(map);
 //-----------------------------------------
 document.body.scroll="no";
 map.invalidateSize(true);
