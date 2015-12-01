@@ -540,8 +540,8 @@ L.bingLayer = function (key, options) {
 		return heatmap;
 	}
 </script>
-<body onload="init();">
-	<div style="width:100%; height:100%" id="map">
+<body style="margin:0px 0px 0px 0px" onload="init();">
+	<div style="width: 100%; height:100%" id="map">
 		<div class="BarLegendPane" id="bar">
 			<div class="BarLegendItem">
 				<div class="BarLegendColor" id="Color0"></div>
@@ -590,14 +590,15 @@ var map = new L.Map('map', {center: new L.LatLng(31,121), zoom: 9, zoomAnimation
 var osm = new L.TileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png');
 var bing_AerialWithLabels = new L.BingLayer("ArZCNayugTS_wpkhFYJHjCM6ojGG_fvv7rXLhd4WmDXNOE-7rs6NpUsigWq34s3y",{type: 'AerialWithLabels',culture: 'en-US'});
 var bing_Aerial = new L.BingLayer("ArZCNayugTS_wpkhFYJHjCM6ojGG_fvv7rXLhd4WmDXNOE-7rs6NpUsigWq34s3y",{type: 'Aerial',culture:"ja"});
-var bing_Road = new L.BingLayer("AgZFkKYNJZSnxDxVbTF3DvKQy07rbMIGqngMRjrk4AiiA9grf1CzElkVFe43L2Bh",{type: 'Road', culture: "zh"});
+var bing_Road = new L.BingLayer("ArZCNayugTS_wpkhFYJHjCM6ojGG_fvv7rXLhd4WmDXNOE-7rs6NpUsigWq34s3y",{type: 'Road', culture: "zh"});
 var heatmap=heatmap_init();
 var DrawerLayers = new L.LayerGroup();
 var GridLayers=new L.LayerGroup();
 var StackLayers=new L.LayerGroup();
 map.addLayer(bing_AerialWithLabels);
-var MapSwitcher=new L.Control.Layers({'OSM':osm, "Bing_AerialWithLabels":bing_AerialWithLabels, "Bing_Aerial":bing_Aerial, /*"Bing_Road":bing_Road*/}, {"DrawerLayers":DrawerLayers,"heatmap":heatmap,"GridLayers":GridLayers,"StackLayer":StackLayers});
+var MapSwitcher=new L.Control.Layers({'OSM':osm, "Bing_AerialWithLabels":bing_AerialWithLabels, "Bing_Aerial":bing_Aerial, "Bing_Road":bing_Road}, {"DrawerLayers":DrawerLayers,"heatmap":heatmap,"GridLayers":GridLayers,"StackLayer":StackLayers});
 map.addControl(MapSwitcher);
+
 //-----------------------------------------------------------------------------------------------------------------------------------------
 //Quadtree Grids Component-----------------------------------------------------------------------------------
 	QuadTreeNode_Minimal_Longitude_Span=0.007;
@@ -932,6 +933,11 @@ function init(){
 //To JavaWeb
 function MapBoundsToJavaWeb() {
 	CallJava("Bounds_x1_x2_y1_y2",map.getBounds().getWest(),map.getBounds().getEast(),map.getBounds().getSouth(),map.getBounds().getNorth());
+}
+function ResizeMap(ScreenWidth,ScreenHeight){
+	document.getElementById("map").style.width=ScreenWidth+"px";
+	document.getElementById("map").style.height=ScreenHeight+"px";
+	map.invalidateSize(true);
 }
 //----------------------------------------------------------------------------------------------------
 </script>
