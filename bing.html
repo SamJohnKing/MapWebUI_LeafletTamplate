@@ -930,6 +930,10 @@ map.on('zoomstart',onZoomStart);
 function init(){
 	document.getElementById("bar").style.cssText="visibility:hidden;";
 }
+map.fitBounds([
+	[31.05, 121.25],
+	[31.45, 121.70]
+]);
 //To JavaWeb
 function MapBoundsToJavaWeb() {
 	CallJava("Bounds_x1_x2_y1_y2",map.getBounds().getWest(),map.getBounds().getEast(),map.getBounds().getSouth(),map.getBounds().getNorth());

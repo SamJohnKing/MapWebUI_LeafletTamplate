@@ -248,6 +248,10 @@ map.addControl(new L.Control.Layers( {'OSM':osm, 'Google Road':ggl, 'Google Sate
 	'Google HYBRID':ggl_HYBRID, 'Google TERRAIN':ggl_TERRAIN}, {"DrawerLayers":DrawerLayers}));
 L.control.scale().addTo(map);
 //-----------------------------------------
+map.fitBounds([
+	[31.05, 121.25],
+	[31.45, 121.70]
+]);
 document.body.scroll="no";
 map.invalidateSize(true);
 function MapBoundsToJavaWeb() {
