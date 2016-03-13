@@ -595,7 +595,7 @@ var heatmap=heatmap_init();
 var DrawerLayers = new L.LayerGroup();
 var GridLayers=new L.LayerGroup();
 var StackLayers=new L.LayerGroup();
-map.addLayer(bing_AerialWithLabels);
+map.addLayer(bing_Road);
 var MapSwitcher=new L.Control.Layers({'OSM':osm, "Bing_AerialWithLabels":bing_AerialWithLabels, "Bing_Aerial":bing_Aerial, "Bing_Road":bing_Road}, {"DrawerLayers":DrawerLayers,"heatmap":heatmap,"GridLayers":GridLayers,"StackLayer":StackLayers});
 map.addControl(MapSwitcher);
 
@@ -929,6 +929,7 @@ map.on('dragstart',onDragStart);
 map.on('zoomstart',onZoomStart);
 function init(){
 	document.getElementById("bar").style.cssText="visibility:hidden;";
+	CallJava("MapAccessed");
 }
 map.fitBounds([
 	[31.05, 121.25],
@@ -942,6 +943,12 @@ function ResizeMap(ScreenWidth,ScreenHeight){
 	document.getElementById("map").style.width=ScreenWidth+"px";
 	document.getElementById("map").style.height=ScreenHeight+"px";
 	map.invalidateSize(true);
+}
+function SetDataDeviation() {
+	if(map.hasLayer(bing_Road)) CallJava("SetDataDeviation",0.0045, -0.002);
+	else if(map.hasLayer(bing_Aerial)) CallJava("SetDataDeviation",0, 0);
+	else if(map.hasLayer(bing_AerialWithLabels)) CallJava("SetDataDeviation",0, 0);
+	else if(map.hasLayer(osm)) CallJava("SetDataDeviation",0, 0);
 }
 //----------------------------------------------------------------------------------------------------
 </script>

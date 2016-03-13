@@ -208,7 +208,7 @@ L.Google.asyncInitialize = function() {
 
 	</script>
 </head>
-<body style="margin:0px 0px 0px 0px">
+<body style="margin:0px 0px 0px 0px" onload="init();">
 	<!-- define a DIV into which the map will appear. Make it take up the whole window -->
 	<div style="width:100%; height:100%" id="map"></div>
 <script type='text/javascript'>
@@ -261,6 +261,15 @@ function ResizeMap(ScreenWidth,ScreenHeight){
 	document.getElementById("map").style.width=ScreenWidth+"px";
 	document.getElementById("map").style.height=ScreenHeight+"px";
 	map.invalidateSize(true);
+}
+function SetDataDeviation() {
+	if(map.hasLayer(ggl)) CallJava("SetDataDeviation",0.0045, -0.002);
+	else if(map.hasLayer(ggl_satellite)) CallJava("SetDataDeviation",0, 0);
+	else if(map.hasLayer(ggl_HYBRID)) CallJava("SetDataDeviation",0.0045, -0.002);
+	else if(map.hasLayer(ggl_TERRAIN)) CallJava("SetDataDeviation",0.0045, -0.002);
+}
+function init(){
+	CallJava("MapAccessed");
 }
 </script>
 	<script src="data3.js"></script>

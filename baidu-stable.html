@@ -13,7 +13,7 @@
         <script src="http://api.map.baidu.com/api?v=1.5&ak=Gt0BG62R7T5GDvuPSj65MBl4"></script>
         <script src="Baidu/leaflet-baidu.js"></script>
     </head>
-    <body style=margin:0px 0px 0px 0px">
+    <body style="margin:0px 0px 0px 0px" onload="init();">
         <div style="width:800px; height:600px" id="map"></div>
         <!-- <div style="width:2100px; height:2100px" id="map"></div> -->
         <script type='text/javascript'>
@@ -50,6 +50,12 @@
                 document.getElementById("map").style.width=ScreenWidth+"px";
                 document.getElementById("map").style.height=ScreenHeight+"px";
                 map.invalidateSize(true);
+            }
+            function SetDataDeviation() {
+                CallJava("SetDataDeviation",0.011,0.0036);
+            }
+            function init(){
+                CallJava("MapAccessed");
             }
             //ResizeMap(1800,1000);
         </script>
